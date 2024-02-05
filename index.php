@@ -88,7 +88,7 @@
     </div>
     <div class="row footer">
         <div class="col-md-12 bg-light text-dark py-2">
-            designed & developed by <a href="https://surajaswal.dev">surajaswal.dev</a> 
+            designed & developed by <a href="https://github.com/surajaswal29">@surajaswal29</a> 
         </div>
         <div class="col-md-12 bg-dark text-light py-2">
             &copy; shillonglocalteernight1.in
