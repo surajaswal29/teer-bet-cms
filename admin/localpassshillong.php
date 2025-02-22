@@ -1,9 +1,9 @@
-<?php include "header-file.php"; ?>
+<?php include "meta.php"; ?>
 
 <div class="container-fluid vh-100 bg">
     <div class="row">
         <div class="col-md-12 py-5 text-center text-white main-login-page">
-            <h1>Shillong Local Teer Night 1 | Password Reset&nbsp;<i class="zmdi zmdi-arrow-forward"></i></h1>
+            <h1>Shillong Teer Result Day | Password Reset&nbsp;<i class="zmdi zmdi-arrow-forward"></i></h1>
         </div>
     </div>
     <div class="row">
@@ -36,7 +36,8 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-5">
-                                <input type="submit" name="change" id="change" value="Change" class="btn btn-block bg-primary text-light font-weight-bold">
+                                <input type="submit" name="change" id="change" value="Change"
+                                    class="btn btn-block bg-primary text-light font-weight-bold">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -79,4 +80,5 @@
     </div> -->
 </div>
 </body>
+
 </html>

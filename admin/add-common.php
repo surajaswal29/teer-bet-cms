@@ -1,60 +1,108 @@
-<?php include "header-file.php"; ?>
-<?php include "header.php"; ?>
+<?php 
+include "meta.php";
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 text-center mt-5">
-            <h3>Update Today's Common Number (<?php echo date('d/m/Y'); ?>)</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-                <table class="table mt-4">
-                    <tr>
-                        <td></td>
-                        <td>Direct</td>
-                        <td>House</td>
-                        <td>Ending</td>
-                    </tr>
-                    <tr>
-                        <td><label for="first_round">F/R</label></td>
-                        <td><input type="text" name="first_direct" id="first_number"></td>
-                        <td><input type="text" name="first_house" id="first_number"></td>
-                        <td><input type="text" name="first_ending" id="first_number"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="first_round">S/R</label></td>
-                        <td><input type="text" name="second_direct" id="first_number"></td>
-                        <td><input type="text" name="second_house" id="first_number"></td>
-                        <td><input type="text" name="second_ending" id="second_number"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4"><button class="btn btn-secondary btn-block" name="update" type="submit">Update</button></td>
-                    </tr>
-                </table>
-            </form>
-            <?php
-                if(isset($_POST['update'])){
-                    $fdirect=$_POST['first_direct'];
-                    $fhouse=$_POST['first_house'];
-                    $fending=$_POST['first_ending'];
-                    $sdirect=$_POST['second_direct'];
-                    $shouse=$_POST['second_house'];
-                    $sending=$_POST['second_ending'];
-                    $date=date('d/m/Y');
-                    if($fdirect!=null && $fhouse!=null && $shouse!=null && $sending!=null){
-                        $query2="UPDATE `common_number` SET `fdirect` = '$fdirect', `fhouse` = '$fhouse', `fending` = '$fending', `sdirect` = '$sdirect', `shouse` = '$shouse', `sending` = '$sending', `date` = '$date'";
-                        $output1=mysqli_query($con,$query2);
-                        if($output1){
-                            echo"<div class='col-md-3 p-1 text-center bg-success text-light'>Common Numbers updated successfully!</div>";
-                            redirect('add-common.php');
+// Get `time_period` from GET request, default to 'day'
+$selectedTimePeriod = $_GET['time_period'] ?? 'day';
+$date = date('Y-m-d');
+
+?>
+
+<div class="container-fluid dashboard-bg">
+    <div class="row vh-100">
+        <?php include "sidebar.php"; ?>
+
+        <!-- Main Content -->
+        <main id="main-dash" class="col-md-9 col-lg-10 p-4 overflow-auto h-100">
+            <?php include "navbar.php"; ?>
+            <div class="row">
+                <div class="col-md-12 text-center mt-5">
+                    <h2 class="text-center text-primary">
+                        Update Today's Common Number (<?php echo date('d/m/Y'); ?>)
+                    </h2>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col-md-6 bg-white shadow-sm rounded-3 p-4">
+                    <form action="add-common.php?time_period=<?php echo urlencode($selectedTimePeriod); ?>"
+                        method="post">
+                        <input type="hidden" name="time_period"
+                            value="<?php echo htmlspecialchars($selectedTimePeriod); ?>">
+
+                        <table class="table mt-4">
+                            <tr class="bg-secondary text-light">
+                                <td>Direct</td>
+                                <td>House</td>
+                                <td>Ending</td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="text" class="form-control" name="direct" maxlength="10" required></td>
+                                <td><input type="text" class="form-control" name="house" maxlength="10" required></td>
+                                <td><input type="text" class="form-control" name="ending" maxlength="10" required></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3">
+                                    <button class="btn btn-primary w-100" name="update" type="submit">Update</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+
+                    <?php
+                    if (isset($_POST['update'])) {
+                        $direct = $_POST['direct'] ?? NULL;
+                        $house = $_POST['house'] ?? NULL;
+                        $ending = $_POST['ending'] ?? NULL;
+                        $time_period = $_POST['time_period'];
+
+                        if ($direct !== NULL && $house !== NULL && $ending !== NULL) {
+                            // Insert or update the entry in `common_number`
+                            $query = "INSERT INTO `common_number` (`date`, `time_period`, `direct`, `house`, `ending`) 
+                                      VALUES (?, ?, ?, ?, ?) 
+                                      ON DUPLICATE KEY UPDATE 
+                                        direct = VALUES(direct),
+                                        house = VALUES(house),
+                                        ending = VALUES(ending)";
+
+                            $stmt = mysqli_prepare($con, $query);
+                            mysqli_stmt_bind_param($stmt, 'sssss', $date, $time_period, $direct, $house, $ending);
+                            mysqli_stmt_execute($stmt);
+                            mysqli_stmt_close($stmt);
+
+                            echo "<div id='success-message' class='alert alert-success text-center mt-3'>Common Numbers updated successfully!</div>";
+                            echo "<script>
+                                setTimeout(function() {
+                                    document.getElementById('success-message').style.display = 'none';
+                                    window.location.href = 'add-common.php?time_period={$selectedTimePeriod}';
+                                }, 1000);
+                            </script>";
+                        } else {
+                            echo "<div class='alert alert-danger text-center mt-3'>All fields are required.</div>";
                         }
-                    }else{
-                        echo"<div class='col-md-3 p-1 text-center bg-danger text-light'>Error!</div>";
                     }
-                }
-            ?>
-        </div>
+                    ?>
+
+                    <!-- Button to View List Page -->
+                    <div class="text-center mt-4">
+                        <a href="list-common.php?time_period=<?php echo $selectedTimePeriod; ?>"
+                            class="btn btn-success">View All Common Numbers</a>
+                    </div>
+
+                </div>
+            </div>
+        </main>
     </div>
 </div>
+
+<style>
+.table th,
+.table td {
+    padding: 12px !important;
+    text-align: center;
+}
+</style>
+
+</body>
+
+</html>

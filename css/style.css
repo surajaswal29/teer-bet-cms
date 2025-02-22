@@ -1,203 +1,280 @@
-*{
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
+/* Global Styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100%;
 }
-.center{
+
+/* Utility Classes */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.red {
+  color: crimson;
+}
+
+.teer-bg-green {
+  background-color: #3fd5ba !important;
+  color: #1a1a1a;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+/* Navigation Styles */
+.top-teer-nav {
+  background-color: #99ccff !important;
+}
+
+.teer-logo {
+  padding: 2px 10px;
+}
+
+.teer-logo .img-fluid {
+  height: 62px;
+  width: 390px;
+}
+
+.teer-nav > .nav > .nav-link {
+  border: 1px solid rgb(233, 231, 231);
+  border-radius: 5px;
+  margin: 0 12px;
+  font-weight: 500;
+  color: black;
+}
+
+.teer-nav > .nav > .nav-link:hover {
+  border-bottom: 1px solid rgb(126, 121, 121);
+  background-color: rgba(231, 225, 225, 0.89);
+}
+
+.teer-nav .nav {
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.teer-nav-1 > .nav > .nav-link {
+  position: relative;
+  color: rgb(73, 71, 71);
+}
+
+.teer-nav-1 > .nav > .nav-link > i > sup {
+  font-weight: 600;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: crimson;
+  top: 26%;
+  right: -1%;
+  position: absolute;
+  font-size: 20px;
+}
+
+.teer-nav-1 .nav {
+  padding: 15px 0;
+  color: brown;
+}
+
+.menu-button {
+  display: none;
+}
+
+/* Heading */
+.heading-1 h1 {
+  color: rgb(10, 10, 10);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#hr {
+  width: 300px !important;
+  color: rgb(44, 44, 44);
+  margin: 0 auto;
+  border: 1px solid rgb(104, 104, 104);
+}
+
+/* Box and Table Styles */
+.teer-box {
+  height: 200px;
+  width: 200px;
+  margin: 6px;
+  border-radius: 5px;
+}
+
+.bg-pos {
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-pos h5 {
+  color: black;
+  text-align: center;
+  margin-top: 170px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+table,
+td,
+th,
+tr {
+  border: 1px solid #000 !important;
+  padding: 0 !important;
+}
+
+/* Background Images */
+.bg-image-1 {
+  background-image: url(../images/teer-common-numbers.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-2 {
+  background-image: url(../images/Deals.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-3 {
+  background-image: url(../images/teer-dream-numbers.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-4 {
+  background-image: url(../images/analytics-1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-5 {
+  background-image: url(../images/targetgame.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-6 {
+  background-image: url(../images/teer-previous-numbers.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-7 {
+  background-image: url(../images/TeerCalendar.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-8 {
+  background-image: url(../images/ReputedCounter.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-9 {
+  background-image: url(../images/target_logo.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.sidebar {
+  z-index: 1000 !important;
+}
+/* Responsive Styles */
+@media (min-width: 900px) {
+  .disp-none {
+    display: none;
+  }
+}
+
+@media (max-width: 476px) {
+  .top-gully-nav {
+    padding: 6px 0;
+    flex-wrap: nowrap;
+  }
+
+  .teer-logo {
+    padding: 0 !important;
+  }
+
+  .teer-logo .img-fluid {
+    height: 35px;
+    max-width: 195px;
+  }
+
+  .menu-button {
+    display: block;
+    font-size: 24px;
+    z-index: 1000;
+    top: 22%;
+    left: 70%;
+  }
+
+  .teer-nav .nav {
+    display: none;
+    justify-content: flex-start;
+  }
+
+  .mobile-nav {
+    position: absolute;
+    width: 200px;
+    top: 160%;
+    z-index: 1000;
+    flex-direction: column;
+    border: 1px solid rgb(218, 217, 217);
+    background: rgb(248, 246, 246);
+    display: none;
+  }
+
+  .login-mobile {
+    display: none;
+  }
+
+  .mobile-log {
+    display: block;
+    width: 150px !important;
+  }
+
+  .teer-box {
+    width: 120px; /* Adjust based on design */
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-@media(min-width:900px){
-    .disp-none{
-        display: none;
-    }
-}
-.menu-button{
-    display: none;
-}
-.top-teer-nav{
-    padding: 5px 10px;
-    border-bottom: 1px solid rgb(185, 184, 184);
-    /* width: 100% !important; */
-    /* top:0%; */
-    /* z-index: 1000; */
-    /* background:rgb(252, 252, 252); */
-    /* position: absolute; */
-}
-.main-sport-dropdown{
-    cursor: pointer;
-    position: relative;
-}
-.teer-logo{
-    padding: 2px 10px;
-}
-.teer-logo .img-fluid{
-    height: 62px;
-    width:390px;
-}
-.teer-nav>.nav>.nav-link{
-    border: 1px solid rgb(233, 231, 231);
-    border-radius: 5px;
-    margin: 0px 12px;
-    font-weight: 500;
-    color: black;
-}
-.teer-nav>.nav>.nav-link:hover{
-    border-bottom: 1px solid rgb(126, 121, 121);
-    border-radius: 5px;
-    background-color: rgba(231, 225, 225, 0.89);
-}
-.teer-nav .nav{
-    padding: 15px 0px;
-    display: flex;
-    align-items: center;
-    margin-top: auto;
-    justify-content: end;
-}
-.teer-nav-1>.nav>.nav-link{
-    position: relative;
-    box-sizing: border-box;
-    margin-top:-3px;
-    color: rgb(73, 71, 71);
-}
-.red{
-    color: crimson;
-}
-.teer-nav-1>.nav>.nav-link>i>sup{
-    font-weight: 600;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: crimson;
-    top: 26%;
-    right: -1%;
-    position: absolute;
-    /* margin-top: -140px; */
-    font-size: 20px;
-}
-.teer-nav-1 .nav{
-    padding: 15px 0px;
-    color: brown;
-    /* justify-content: center; */
-}
-/* heading */
-.heading-1 h1{
-    color: rgb(10, 10, 10);
-    margin: 0rem;
-    font-size: 24px;
-    font-weight: 600;
-}
-#hr{
-    width:300px !important;
-    color: rgb(44, 44, 44);
-    margin-right: auto;
-    margin-left: auto;
-    border: 1px solid rgb(104, 104, 104);
-}
-.table tr td{
-    border: 1px solid rgb(31, 30, 30);
+    flex-shrink: 0;
+  }
+
+  .round-fs h2 {
+    font-size: 16px;
+  }
+
+  .bg-pos h5 {
+    margin-top: 85px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .footer {
+    position: relative !important;
+    bottom: 0;
+    margin-top: 2rem !important;
     text-align: center;
-    vertical-align: middle;
-    padding:0.25rem !important;
+  }
 }
-.table .round-fs{
-    background-color: rgb(59, 248, 248);
-    font-weight: 600;
-}
-.tb-prev{
-    height: 400px;
-}
-.round-fs3{
-    position: sticky;
-    top: 0%;
-    z-index: 1000;
-}
-.tab-scroll{
-    overflow-y: scroll;
-    height: 450px !important;
-}
-.round-fs h2{
-    font-size: 18px;
-    margin-top: 0.5rem !important;
-}
-.teer-box{
-    height:200px;
-    width:200px;
-    /* border: 1px solid #000; */
-    margin: 6px;
-    border-radius: 5px;
-}
-.bg-pos{
-    background-position: center;
-    background-size: 200px 200px;
-}
-a{
-    text-decoration: none !important;
-}
-.bg-pos h5{
-    color:black;
-    text-decoration: none;
-    text-align: center;
-    margin-top:170px;
-    font-size: 18px;
-    font-weight: 600px;
-}
-.bg-image-1{
-    background-image: url(../images/teer-result.svg);
-    background-size: 130px 130px;
-    background-repeat: no-repeat;
-    background-color: #fcb540;
-}
-.bg-image-2{
-    background-image: url(../images/common.png);
-    background-size: 130px 130px;
-    background-repeat: no-repeat;
-    background-color: #f33535dc;
-}
-.bg-image-3{
-    background-image: url(../images/dream-number.png);
-    background-size: 130px 130px;
-    background-repeat: no-repeat;
-    /* background-color: #e70f0fdc; */
-    border: 1px solid rgb(107, 106, 106);
-}
-.bg-image-4{
-    background-image: url(../images/predict.png);
-    background-size: 100px 100px;
-    background-repeat: no-repeat;
-    background-color: #aecfe0;
-}
-.bg-image-5{
-    background-image: url(../images/prev-result.png);
-    background-size: 100px 100px;
-    background-repeat: no-repeat;
-    background-color: #82d0d8;
-}
-.bg-image-6{
-    background-image: url(../images/deal.png);
-    background-color: #67bd67;
-}
-.bg-image-7{
-    background-image: url(../images/analytics.png);
-    background-color: #bbbbbb;
-    background-size: 80px 80px;
-    background-repeat: no-repeat;
-}
-.bg-image-8{
-    background-image: url(../images/calendar1.png);
-    background-color: #df3131;
-    background-size: 80px 80px;
-    background-repeat: no-repeat;
-}
-.bg-image-9{
-    background-image: url(../images/target.png);
-    background-color: #9321df;
-    background-size: 80px 80px;
-    background-repeat: no-repeat;
-}
-.footer{
-    position: fixed;
-    /* top:100%; */
-    bottom: 0%;
-    width: 100%;
-    text-align: center;
+
+.dream-bg {
+  background-color: rgb(111, 183, 255) !important;
 }
