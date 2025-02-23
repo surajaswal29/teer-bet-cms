@@ -59,13 +59,14 @@
         </div>
     </div>
 
-    <div class="row p-4 center mt-4">
+    <div class="row d-none d-md-flex p-4 center mt-4">
         <a class="bg-image-5 bg-pos teer-box" href="index.php"></a>
         <a class="bg-image-3 bg-pos teer-box" href="dream-num.php"></a>
         <a class="bg-image-6 bg-pos teer-box" href="prev-result.php"></a>
     </div>
 
-    <div class="mt-3"></div>
+    <?php include "down-section.php"; ?>
 
-    <?php include "footer.php"; ?>
 </div>
+<!-- Footer -->
+<?php include "footer.php"; ?>

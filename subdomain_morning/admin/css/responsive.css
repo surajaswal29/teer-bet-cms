@@ -1,0 +1,21 @@
+@media(max-width:400px){
+    .form-wrap-1 .form-img{
+        display: none;
+    }
+    .form-wrap-1{
+        margin: auto;
+        /* padding: 80px; */
+        display: block;
+        height: 300px;
+        width:240px;
+        /* background-color: brown; */
+    }
+    .form-wrap-1 .wavefire-form{
+        width: 240px;
+        background-color: rgb(9, 119, 192) !important;
+        padding: 50px 30px;
+    }
+    .main-login-page h1{
+        font-size: 25px ;
+    }
+}

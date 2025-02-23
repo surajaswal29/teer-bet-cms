@@ -1,6 +1,6 @@
 <?php include "header.php"; ?>
 
-<div class="container-fluid vh-100">
+<div class="container-fluid vh-100" style="overflow-y: scroll; overflow-x: hidden;">
     <?php include "nav-bar.php"; ?>
 
     <div class="row mt-3">
@@ -48,7 +48,7 @@
     </div>
 
     <!-- Navigation Buttons -->
-    <div class="row p-4 center mt-4">
+    <div class="row d-none d-md-flex p-4 center mt-4">
         <a class="bg-image-1 bg-pos teer-box" href="common-num.php">
         </a>
         <a class="bg-image-2 bg-pos teer-box" href="index.php">
@@ -57,6 +57,8 @@
         </a>
     </div>
 
-    <!-- Footer -->
-    <?php include "footer.php"; ?>
+<?php include "down-section.php"; ?>
 </div>
+
+<!-- Footer -->
+<?php include "footer.php"; ?>

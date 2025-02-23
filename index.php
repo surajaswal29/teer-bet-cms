@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <div class="row center mt-4">
+    <div class="row center" style="margin-top: 2.5rem">
         <?php 
         $menuItems = [
             ['title' => 'COMMON NUMBER', 'link' => 'common-num.php', 'class' => 'bg-image-1'],
@@ -85,9 +85,9 @@
         }
         ?>
     </div>
-
-    <?php include "footer.php"; ?>
 </div>
+<!-- Footer -->
+<?php include "footer.php"; ?>
 
 <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
 </body>

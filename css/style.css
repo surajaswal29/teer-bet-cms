@@ -103,8 +103,8 @@ a {
 .teer-box {
   height: 200px;
   width: 200px;
-  margin: 6px;
   border-radius: 5px;
+  margin: 6px;
 }
 
 .bg-pos {
@@ -183,13 +183,7 @@ tr {
   background-repeat: no-repeat;
 }
 
-/* Footer */
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-}
+
 .sidebar {
   z-index: 1000 !important;
 }
@@ -255,6 +249,7 @@ tr {
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    margin: 0;
   }
 
   .round-fs h2 {
@@ -265,13 +260,6 @@ tr {
     margin-top: 85px;
     font-size: 10px;
     font-weight: 700;
-  }
-
-  .footer {
-    position: relative !important;
-    bottom: 0;
-    margin-top: 2rem !important;
-    text-align: center;
   }
 }
 

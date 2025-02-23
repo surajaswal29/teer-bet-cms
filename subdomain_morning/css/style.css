@@ -1,0 +1,281 @@
+/* Global Styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100%;
+}
+
+/* Utility Classes */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.red {
+  color: crimson;
+}
+
+.teer-bg-green {
+  background-color: #3fd5ba !important;
+  color: #1a1a1a;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+/* Navigation Styles */
+.top-teer-nav {
+  background-color: #99ccff !important;
+}
+
+.teer-logo {
+  padding: 2px 10px;
+}
+
+.teer-logo .img-fluid {
+  height: 62px;
+  width: 390px;
+}
+
+.teer-nav > .nav > .nav-link {
+  border: 1px solid rgb(233, 231, 231);
+  border-radius: 5px;
+  margin: 0 12px;
+  font-weight: 500;
+  color: black;
+}
+
+.teer-nav > .nav > .nav-link:hover {
+  border-bottom: 1px solid rgb(126, 121, 121);
+  background-color: rgba(231, 225, 225, 0.89);
+}
+
+.teer-nav .nav {
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.teer-nav-1 > .nav > .nav-link {
+  position: relative;
+  color: rgb(73, 71, 71);
+}
+
+.teer-nav-1 > .nav > .nav-link > i > sup {
+  font-weight: 600;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: crimson;
+  top: 26%;
+  right: -1%;
+  position: absolute;
+  font-size: 20px;
+}
+
+.teer-nav-1 .nav {
+  padding: 15px 0;
+  color: brown;
+}
+
+.menu-button {
+  display: none;
+}
+
+/* Heading */
+.heading-1 h1 {
+  color: rgb(10, 10, 10);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#hr {
+  width: 300px !important;
+  color: rgb(44, 44, 44);
+  margin: 0 auto;
+  border: 1px solid rgb(104, 104, 104);
+}
+
+/* Box and Table Styles */
+.teer-box {
+  height: 200px;
+  width: 200px;
+  border-radius: 5px;
+  margin: 6px;
+}
+
+.bg-pos {
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-pos h5 {
+  color: black;
+  text-align: center;
+  margin-top: 170px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+table,
+td,
+th,
+tr {
+  border: 1px solid #000 !important;
+  padding: 0 !important;
+}
+
+/* Background Images */
+.bg-image-1 {
+  background-image: url(../images/teer-common-numbers.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-2 {
+  background-image: url(../images/Deals.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-3 {
+  background-image: url(../images/teer-dream-numbers.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-4 {
+  background-image: url(../images/analytics-1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-5 {
+  background-image: url(../images/targetgame.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-6 {
+  background-image: url(../images/teer-previous-numbers.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-7 {
+  background-image: url(../images/TeerCalendar.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-8 {
+  background-image: url(../images/ReputedCounter.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image-9 {
+  background-image: url(../images/target_logo.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.sidebar {
+  z-index: 1000 !important;
+}
+/* Responsive Styles */
+@media (min-width: 900px) {
+  .disp-none {
+    display: none;
+  }
+}
+
+@media (max-width: 476px) {
+  .top-gully-nav {
+    padding: 6px 0;
+    flex-wrap: nowrap;
+  }
+
+  .teer-logo {
+    padding: 0 !important;
+  }
+
+  .teer-logo .img-fluid {
+    height: 35px;
+    max-width: 195px;
+  }
+
+  .menu-button {
+    display: block;
+    font-size: 24px;
+    z-index: 1000;
+    top: 22%;
+    left: 70%;
+  }
+
+  .teer-nav .nav {
+    display: none;
+    justify-content: flex-start;
+  }
+
+  .mobile-nav {
+    position: absolute;
+    width: 200px;
+    top: 160%;
+    z-index: 1000;
+    flex-direction: column;
+    border: 1px solid rgb(218, 217, 217);
+    background: rgb(248, 246, 246);
+    display: none;
+  }
+
+  .login-mobile {
+    display: none;
+  }
+
+  .mobile-log {
+    display: block;
+    width: 150px !important;
+  }
+
+  .teer-box {
+    width: 120px; /* Adjust based on design */
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .round-fs h2 {
+    font-size: 16px;
+  }
+
+  .bg-pos h5 {
+    margin-top: 85px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .footer {
+    position: relative !important;
+    bottom: 0;
+    margin-top: 2rem !important;
+    text-align: center;
+  }
+}
+
+.dream-bg {
+  background-color: rgb(111, 183, 255) !important;
+}
