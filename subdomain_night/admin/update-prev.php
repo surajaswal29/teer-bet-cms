@@ -4,6 +4,7 @@ include "meta.php";
 // Get `time_period` from GET request, default to 'day'
 $selectedTimePeriod = $_GET['time_period'] ?? 'day';
 $date = date('Y-m-d');
+
 ?>
 
 <div class="container-fluid dashboard-bg">
@@ -18,21 +19,20 @@ $date = date('Y-m-d');
                     <h2 class="text-center text-primary">Update Previous Result</h2>
                 </div>
                 <div class="col-md-3 mt-5">
-                    <a href="view-prev.php?time_period=<?php echo $selectedTimePeriod; ?>"
+                    <a href="view-prev.php?time_period=<?php echo htmlspecialchars($selectedTimePeriod); ?>"
                         class="btn btn-block btn-warning">View Previous Result</a>
                 </div>
             </div>
             <div class="row center">
                 <div class="col-md-10 bg-white shadow-sm rounded-3">
-                    <form action="update-prev.php?time_period=<?php echo urlencode($selectedTimePeriod); ?>"
-                        method="post">
+                    <form action="" method="post">
                         <input type="hidden" name="time_period"
                             value="<?php echo htmlspecialchars($selectedTimePeriod); ?>">
 
                         <table class="table mt-4">
                             <tr>
                                 <td><label for="date">Date</label></td>
-                                <td><input type="date" class="form-control" name="date" id="date" required></td>
+                                <td><input type="text" class="form-control" name="date" id="date" required></td>
                             </tr>
                             <tr>
                                 <td><label for="first_round">First Round</label></td>
@@ -44,7 +44,7 @@ $date = date('Y-m-d');
                                 <td><input type="text" class="form-control" name="second_round" id="second_round"
                                         required></td>
                             </tr>
-                            <!-- Show third & fourth round only when time_period is 'day' -->
+
                             <?php if ($selectedTimePeriod === 'day') : ?>
                             <tr>
                                 <td><label for="third_round">Third Round</label></td>
@@ -66,21 +66,20 @@ $date = date('Y-m-d');
 
                     <?php
                     if (isset($_POST['update'])) {
-                        $resultDate = $_POST['date'];
-                        $firstRound = $_POST['first_round'];
-                        $secondRound = $_POST['second_round'];
-                        $timePeriod = $_POST['time_period'];
+                        $resultDate = mysqli_real_escape_string($con, $_POST['date']);
+                        $firstRound = mysqli_real_escape_string($con, $_POST['first_round']);
+                        $secondRound = mysqli_real_escape_string($con, $_POST['second_round']);
+                        $timePeriod = mysqli_real_escape_string($con, $_POST['time_period']);
+                        $thirdRound = isset($_POST['third_round']) ? mysqli_real_escape_string($con, $_POST['third_round']) : null;
+                        $fourthRound = isset($_POST['fourth_round']) ? mysqli_real_escape_string($con, $_POST['fourth_round']) : null;
 
-                        // Handle third and fourth round only if time_period is 'day'
-                        $thirdRound = ($timePeriod === 'day' && !empty($_POST['third_round'])) ? $_POST['third_round'] : NULL;
-                        $fourthRound = ($timePeriod === 'day' && !empty($_POST['fourth_round'])) ? $_POST['fourth_round'] : NULL;
+                        // Allow 0, 00, xx as valid inputs, but NULL should be stored for empty fields
+                        $thirdRound = ($thirdRound !== '' && $thirdRound !== null) ? "'$thirdRound'" : "NULL";
+                        $fourthRound = ($fourthRound !== '' && $fourthRound !== null) ? "'$fourthRound'" : "NULL";
 
                         // Insert data into prev_result table
                         $query = "INSERT INTO prev_result (date, first_round, second_round, third_round, fourth_round, city, time_period) 
-                                  VALUES ('$resultDate', '$firstRound', '$secondRound', 
-                                          ".($thirdRound ? "'$thirdRound'" : "NULL").", 
-                                          ".($fourthRound ? "'$fourthRound'" : "NULL").", 
-                                          'Shillong', '$timePeriod')";
+                                  VALUES ('$resultDate', '$firstRound', '$secondRound', $thirdRound, $fourthRound, 'Shillong', '$timePeriod')";
 
                         $output = mysqli_query($con, $query);
                         
@@ -89,11 +88,11 @@ $date = date('Y-m-d');
                             echo "<script>
                                 setTimeout(function() {
                                     document.getElementById('success-message').style.display = 'none';
-                                    window.location.href = 'update-prev.php?time_period={$selectedTimePeriod}';
+                                    window.location.href = 'update-prev.php?time_period=' + encodeURIComponent('$selectedTimePeriod');
                                 }, 1000);
                             </script>";
                         } else {
-                            echo "<div class='col-md-3 p-1 text-center bg-danger text-light'>Error updating result!</div>";
+                            echo "<div class='alert alert-danger text-center mt-3'>Error updating result! " . mysqli_error($con) . "</div>";
                         }
                     }
                     ?>

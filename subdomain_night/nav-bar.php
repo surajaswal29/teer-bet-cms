@@ -1,18 +1,28 @@
 <?php 
-    $currentPage = basename($_SERVER['PHP_SELF']); // Get current page filename
+$currentPage = basename($_SERVER['PHP_SELF']); // Get current page filename
+$current_timePeriod = $timePeriod;
+
+// Define logos based on time period
+$logos = [
+    'day' => "images/day-logo.png",
+    'night' => "images/night-logo.png",
+    'morning' => "images/morning-logo.png"
+];
+
+// Set the appropriate logo
+$logo = $logos[$current_timePeriod] ?? $logos['day']; // Default to day logo if not found
 ?>
 
 <nav class="row navbar navbar-expand-md top-teer-nav shadow-sm p-1">
     <a class="navbar-brand teer-logo" href="index.php">
-        <img src="images/night-logo.png" alt="Shillong Teer night" class="img-fluid" style="max-height: 60px;">
+        <img src="<?php echo $logo; ?>" alt="Shillong Teer <?php echo ucfirst($current_timePeriod); ?>"
+            class="img-fluid" style="max-height: 60px;">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav fw-medium d-flex gap-3" style="
-        gap: 10px;
-        ">
+        <ul class="navbar-nav fw-medium d-flex gap-3" style="gap: 10px;">
             <li class="nav-item">
                 <a class="btn <?php echo ($currentPage == 'index.php') ? 'btn-primary' : 'btn-secondary'; ?>"
                     href="index.php">

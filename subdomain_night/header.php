@@ -5,7 +5,7 @@ include "admin/function.inc.php";
 include "admin/config.php";
 
 // Fetch SEO data for the selected time period
-$query = "SELECT * FROM `seo` WHERE `time_period` = 'night' LIMIT 1";
+$query = "SELECT * FROM `seo` WHERE `time_period` = '$timePeriod' LIMIT 1";
 $result = mysqli_query($con, $query);
 $data = mysqli_fetch_assoc($result);
 
@@ -23,7 +23,7 @@ $seo_keywords = $data['keyword'] ?? "shillong, teer, result, latest, update";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="CMENDIrEW8QVAk3oQOQCawa8GgON4QtHXmkV1sXIntY" />
 
-    <meta property="og:url" content="https://night.shillongteeresult.in" />
+    <meta property="og:url" content="https://www.shillongteeresult.in" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="<?php echo htmlspecialchars($seo_title); ?>" />
     <meta property="og:description" content="<?php echo htmlspecialchars($seo_description); ?>" />
@@ -37,7 +37,6 @@ $seo_keywords = $data['keyword'] ?? "shillong, teer, result, latest, update";
 
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -56,7 +55,6 @@ $seo_keywords = $data['keyword'] ?? "shillong, teer, result, latest, update";
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-
     <script src="js/main.js"></script>
 </head>
 

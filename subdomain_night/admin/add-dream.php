@@ -20,7 +20,8 @@ $currentDate = date('Y-m-d');
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-8 bg-white shadow-sm rounded-3 p-4">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                    <form action="add-dream.php?time_period=<?php echo urlencode($selectedTimePeriod); ?>"
+                        method="post">
                         <input type="hidden" name="time_period"
                             value="<?php echo htmlspecialchars($selectedTimePeriod); ?>">
 
@@ -61,7 +62,13 @@ $currentDate = date('Y-m-d');
                         mysqli_stmt_bind_param($stmt, 'sssss', $dream, $numbers, $house, $ending, $timePeriod);
                         
                         if (mysqli_stmt_execute($stmt)) {
-                            echo "<div class='alert alert-success mt-3'>Dream numbers updated successfully!</div>";
+                            echo "<div id='success-message' class='alert alert-success text-center mt-3'>Dream numbers updated successfully!</div>";
+                            echo "<script>
+                                setTimeout(function() {
+                                    document.getElementById('success-message').style.display = 'none';
+                                    window.location.href = 'add-dream.php?time_period={$selectedTimePeriod}';
+                                }, 1000);
+                            </script>";
                         } else {
                             echo "<div class='alert alert-danger mt-3'>Error updating dream numbers. Please try again.</div>";
                         }

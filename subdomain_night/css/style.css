@@ -182,14 +182,12 @@ tr {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-/* Footer */
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+.bg-image-tr {
+  background-image: url(../images/teer-result.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
 .sidebar {
   z-index: 1000 !important;
 }
@@ -266,13 +264,6 @@ tr {
     margin-top: 85px;
     font-size: 10px;
     font-weight: 700;
-  }
-
-  .footer {
-    position: relative !important;
-    bottom: 0;
-    margin-top: 2rem !important;
-    text-align: center;
   }
 }
 

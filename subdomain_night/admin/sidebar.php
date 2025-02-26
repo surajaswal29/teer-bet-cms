@@ -24,7 +24,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
             </a>
         </li>
         <li class="nav-item">
-            <a href="add-common.php?time_period=<?php echo $selectedTimePeriod; ?>"
+            <a href="list-common.php?time_period=<?php echo $selectedTimePeriod; ?>"
                 class="nav-link text-white <?php echo ($current_page == 'add-common.php') ? 'active bg-secondary' : ''; ?>">
                 <i class="zmdi zmdi-edit"></i> Common Number
             </a>

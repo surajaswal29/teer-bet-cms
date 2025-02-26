@@ -182,7 +182,11 @@ tr {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+.bg-image-tr {
+  background-image: url(../images/teer-result.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .sidebar {
   z-index: 1000 !important;

@@ -57,8 +57,8 @@ $date = date('Y-m-d');
                                     <td><?php echo htmlspecialchars($row['first_round']); ?></td>
                                     <td><?php echo htmlspecialchars($row['second_round']); ?></td>
                                     <?php if ($selectedTimePeriod === 'day') { ?>
-                                    <td><?php echo htmlspecialchars($row['third_round'] ?? '-'); ?></td>
-                                    <td><?php echo htmlspecialchars($row['fourth_round'] ?? '-'); ?></td>
+                                    <td><?php echo htmlspecialchars($row['third_round']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['fourth_round']); ?></td>
                                     <td><?php echo htmlspecialchars($row['city']); ?></td>
                                     <?php } ?>
                                     <td>
